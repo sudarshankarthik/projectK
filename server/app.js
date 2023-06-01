@@ -9,7 +9,8 @@ import cors from 'cors'
 import multer, { diskStorage } from 'multer'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
-
+import { register } from './controllers/auth.js'
+import { log } from 'console'
 
 // Config
 const __filename = fileURLToPath(import.meta.url);
@@ -31,12 +32,14 @@ const storage = diskStorage({
     destination: (req,file,cb) => {
         cb(null,"public/assets")
     },
-    filename: (req,file,cb) => {
+    filename: (req,file,cb) => {   
         cb(null,file.originalname)
     }
 })
 const upload = multer({storage})
-
+    
+// Routes
+app.post("/auth/register", upload.single("picture"), register)
 
 //MONGOOSE
 const PORT = process.env.PORT
@@ -50,4 +53,3 @@ mongoose.connect(process.env.MONGO_URI, {
 ).catch(
     (e) => console.log(e)
 )
-
