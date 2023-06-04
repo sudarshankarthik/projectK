@@ -11,6 +11,8 @@ import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
 import { register } from './controllers/auth.js'
 import { log } from 'console'
+import authRoutes from './routes/auth.js'
+import userRoutes from './routes/users.js'
 
 // Config
 const __filename = fileURLToPath(import.meta.url);
@@ -32,7 +34,8 @@ const storage = diskStorage({
     destination: (req,file,cb) => {
         cb(null,"storage/images")
     },
-    filename: (req,file,cb) => {   
+    filename: (req,file,cb) => {  
+        req.picturePath = file.originalname 
         cb(null,file.originalname)
     }
 })
@@ -40,6 +43,8 @@ const upload = multer({storage})
     
 // Routes
 app.post("/auth/register", upload.single("picture"), register)
+app.use("/auth",authRoutes)
+app.use("/users",userRoutes)
 
 //MONGOOSE
 const PORT = process.env.PORT
