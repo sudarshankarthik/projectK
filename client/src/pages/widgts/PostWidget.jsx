@@ -1,0 +1,141 @@
+import React, { useEffect, useState } from 'react'
+import {
+  EditOutlined,
+  DeleteOutlined,
+} from "@mui/icons-material";
+import SendIcon from '@mui/icons-material/Send';
+import { useDispatch, useSelector } from 'react-redux';
+import { Box, IconButton, InputBase, Typography, useTheme } from '@mui/material';
+import WidgetWrapper from 'components/widgetWrapper';
+import FlexBetween from 'components/flexBetween';
+import UserImage from 'components/UserImage';
+import Dropzone from 'react-dropzone';
+
+
+
+
+const PostWidget = () => {
+
+  const [image, setImage] = useState(null)
+  const [discription, setDiscription] = useState("")
+  const user = useSelector((state) => state.user)
+
+  const { palette } = useTheme()
+
+  const token = useSelector((state) => state.token)
+  const dispatch = useDispatch()
+
+
+  const handlePost = async () => {
+    console.log('handling post');
+    const formData = new FormData()
+    formData.append("discription", discription)
+    if (image) {
+      formData.append("picture", image)
+    }
+
+    const res = await fetch(`http://localhost:3001/posts`, {
+      method: "POST",
+      headers: { Authorization: token },
+      body: formData
+    })
+
+    const posts = await res.json()
+
+    dispatch(setDiscription({ posts }));
+    setImage(null)
+    setDiscription("")
+
+  }
+
+  useEffect(() => {
+    if (image)
+      console.log(image.name);
+  }, [image])
+
+  return (
+    <WidgetWrapper>
+      <FlexBetween gap="2.5 rem">
+        <UserImage image={user.picturePath} />
+        <InputBase
+          placeholder='whats happening...'
+          onChange={(e) => setDiscription(e.target.value)}
+          sx={
+            {
+              width: '100%',
+              backgroundColor: palette.background.paper,
+              borderRadius: '2rem',
+              padding: '1rem 2rem'
+            }
+          }
+        />
+      </FlexBetween>
+      {(
+        <Box
+          border='1px solid black'
+          borderRadius='2rem'
+          mt='1rem'
+          p='1rem'
+        >
+
+          <Dropzone
+            accept=".jpg,.jpeg,.png"
+            multiple={false}
+            onDrop={(file) => setImage(file[0])}
+          >
+            {({ getRootProps, getInputProps }) => (
+              <FlexBetween>
+
+                <Box
+                  {...getRootProps()}
+                  border={`2px dashed ${palette.primary.main}`}
+                  p='1rem'
+                  width='100%'
+                  sx={{
+                    "&:hover": {
+                      cursor: "pointer"
+                    }
+                  }}
+                >
+                  <input {...getInputProps()} />
+                  {!image ? (
+                    <Typography>{"Add Image Hear"}</Typography>
+                  ) : (
+                    <FlexBetween>
+                      <Typography>{image.name}</Typography>
+                      <EditOutlined />
+                    </FlexBetween>
+
+                  )
+                  }
+                </Box>
+                {
+                  (image && (
+                    <>
+                      <IconButton
+                        onClick={() => setImage(null)}
+                        sx={{ width: "15%" }}
+                      >
+                        <DeleteOutlined />
+                      </IconButton>
+
+                      <IconButton
+                        onClick={() => handlePost()}
+                        sx={{ width: "15%" }}
+                      >
+                        <SendIcon  />
+                      </IconButton>
+                    </>
+                  ))
+                }
+              </FlexBetween>
+            )}
+          </Dropzone>
+
+        </Box>
+      )}
+    </WidgetWrapper>
+  )
+}
+
+export default PostWidget
