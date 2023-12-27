@@ -10,12 +10,10 @@ import WidgetWrapper from 'components/widgetWrapper';
 import FlexBetween from 'components/flexBetween';
 import UserImage from 'components/UserImage';
 import Dropzone from 'react-dropzone';
-
-
+import { userActions } from 'store/user-slice';
 
 
 const PostWidget = () => {
-
   const [image, setImage] = useState(null)
   const [discription, setDiscription] = useState("")
   const user = useSelector((state) => state.user)
@@ -27,9 +25,8 @@ const PostWidget = () => {
 
 
   const handlePost = async () => {
-    console.log('handling post');
     const formData = new FormData()
-    formData.append("discription", discription)
+    formData.append("description", discription)
     if (image) {
       formData.append("picture", image)
     }
@@ -42,16 +39,15 @@ const PostWidget = () => {
 
     const posts = await res.json()
 
-    dispatch(setDiscription({ posts }));
+    dispatch(
+      userActions.setPosts({
+        posts
+      })
+    );
     setImage(null)
     setDiscription("")
 
   }
-
-  useEffect(() => {
-    if (image)
-      console.log(image.name);
-  }, [image])
 
   return (
     <WidgetWrapper>

@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Super Soda: The Drink of Heroes",
+    "description": "Quench your thirst with the power of Super Soda! Feel like a superhero with every sip.",
+    "picturePath": "super-soda.jpg"
+  },
+  {
+    "name": "Galactic Burgers: Taste the Universe",
+    "description": "Blast off to flavor town with our out-of-this-world Galactic Burgers! It's a taste that's truly cosmic.",
+    "picturePath": "galactic-burgers.jpg"
+  },
+  {
+    "name": "Wizard Wear: Dress Like a Sorcerer",
+    "description": "Unleash your inner wizard with our magical Wizard Wear! Cast a fashion spell wherever you go.",
+    "picturePath": "wizard-wear.jpg"
+  },
+  {
+    "name": "Space Socks: Socks for Space Travelers",
+    "description": "Keep your feet cozy on your cosmic journeys with our Space Socks! They're space-tacular.",
+    "picturePath": "space-socks.jpg"
+  },
+  {
+    "name": "Dino Delights: Snacks from the Jurassic",
+    "description": "Travel back in time with Dino Delights! Snack like it's the age of the dinosaurs.",
+    "picturePath": "dino-delights.jpg"
+  },
+  {
+    "name": "Pirate Plunder: Loot Fit for a Pirate",
+    "description": "Claim your share of Pirate Plunder! It's treasure that'll make any scallywag smile.",
+    "picturePath": "pirate-plunder.jpg"
+  },
+  {
+    "name": "Time Travel Tours: Visit Any Era",
+    "description": "Experience history firsthand with Time Travel Tours! Where will you go first?",
+    "picturePath": "time-travel-tours.jpg"
+  },
+  {
+    "name": "Ninja Noodles: Stealthy Slurping",
+    "description": "Master the art of noodle eating with Ninja Noodles! Slurp silently like a true ninja.",
+    "picturePath": "ninja-noodles.jpg"
+  },
+  {
+    "name": "Zombie Zappers: Stay Alive, Stay Fresh",
+    "description": "Defend against the undead with Zombie Zappers! Keep zombies and odors at bay.",
+    "picturePath": "zombie-zappers.jpg"
+  },
+  {
+    "name": "Vampire Velvet: Clothing for Creatures of the Night",
+    "description": "Embrace your nocturnal nature with Vampire Velvet! Fashion that's dark and luxurious.",
+    "picturePath": "vampire-velvet.jpg"
+  }
+]
+  

@@ -11,7 +11,6 @@ export const themeSettings = (mode) => {
             main: '#fafafa',
           },
           primary: {
-
             main: '#85CB33',
           },
           secondary: {

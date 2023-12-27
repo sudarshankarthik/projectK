@@ -1,7 +1,10 @@
 import { Box, useMediaQuery } from '@mui/material'
 import NavBar from 'components/navBar'
+import FriendListWidget from 'pages/widgts/FriendListWidget'
 import PostWidget from 'pages/widgts/PostWidget'
+import PostsWidget from 'pages/widgts/PostsWidget'
 import UserWidgets from 'pages/widgts/UserWidgets'
+import AdvertWidget from 'pages/widgts/advertWidget'
 import React from 'react'
 
 const Home = () => {
@@ -30,13 +33,19 @@ const Home = () => {
           mt={isNonMobileScreens ? undefined : "2rrem"}
         >
           <PostWidget />
+          <br /> <br />
+          <PostsWidget />
         </Box>
         <Box
           flexBasis={isNonMobileScreens ? "26%" : undefined}
-          mt={isNonMobileScreens ? undefined : "2rrem"}
+          mt={isNonMobileScreens ? undefined : "2rem"}
         >
-          {/* <PostWidget /> */}
+          <AdvertWidget /> 
+          <br /> <br />
+          <FriendListWidget />
+
         </Box>
+
       </Box>
       
     </Box>

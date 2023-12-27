@@ -49,8 +49,11 @@ const UserWidgets = () => {
         viewedProfile,
         impressions,
         picturePath,
-        userId
+        userId,
+        bio,occupation,location
     } = user
+
+    if (friends === null) friends = []
 
     return (
         <WidgetWrapper>
@@ -80,7 +83,7 @@ const UserWidgets = () => {
                     </Box>
                 </FlexBetween>
             </FlexBetween>
-                
+            <Typography color={accent}>{bio}</Typography>    
                 <Divider />
 
                 <Box p="1rem 0">
@@ -91,6 +94,14 @@ const UserWidgets = () => {
                     <FlexBetween mb="0.5rem">
                         <Typography color={accent}>Impressions of your post</Typography>
                         <Typography color={primary} fontWeight="500">{impressions}</Typography>
+                    </FlexBetween>
+                    <FlexBetween mb="0.5rem">
+                        <Typography color={accent}>Location</Typography>
+                        <Typography color={primary} fontWeight="500">{location}</Typography>
+                    </FlexBetween>
+                    <FlexBetween mb="0.5rem">
+                        <Typography color={accent}>Occupaton</Typography>
+                        <Typography color={primary} fontWeight="500">{occupation}</Typography>
                     </FlexBetween>
                 </Box>
 

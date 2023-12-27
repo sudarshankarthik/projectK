@@ -32,12 +32,22 @@ const UserSchema = new Schema(
             type: String,
             default: ""
         },
+        bio: {
+            type: String,
+            default: ""
+        },
+        location: {
+            type: String,
+            default: ""
+        },
+        occupation: {
+            type: String,
+            default: ""
+        },
         friends: {
             type: Array,
             default: []
         },
-        location: String,
-        occupation: String,
         viewedProfile: Number,
         impressions:Number
     }, 

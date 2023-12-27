@@ -12,13 +12,12 @@ export const createPost = async (req, res) => {
             firstName: user.firstName,
             lastName: user.lastName,
             location: user.location,
-            description,
+            discription: description,
             userPicturePath: user.picturePath,
             picturePath,
             likes: {},
             comments: []
         })
-
         await newPost.save()
 
         const post = await Post.find()
@@ -55,9 +54,11 @@ export const getUserPosts = async (req,res) => {
 export const likePost = async (req,res) => {
     try {
         const {id} = req.params
-        const {userId} = req.body 
+        const userId = req.user.id
         const post = await Post.findById(id)
         const isLiked = post.likes.get(userId)
+
+        console.log(userId);
 
         console.log(isLiked)
 
@@ -70,8 +71,8 @@ export const likePost = async (req,res) => {
             id,
             {likes: post.likes},
             {new: true}
-        )
-
+        ) 
+        
         res.status(200).json(updatedPost)
 
     } catch (error) {

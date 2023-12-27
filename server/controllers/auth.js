@@ -4,14 +4,15 @@ import jwt from 'jsonwebtoken';
 
 export const register = async (req,res) => {
     try {
-        const {
+        const { 
             firstName,
             lastName,
             email,
             password,
             friends,
             location,
-            occupation
+            occupation,
+            bio
         } = req.body
         console.log(email);
         const salt = await genSalt()
@@ -28,6 +29,7 @@ export const register = async (req,res) => {
             friends,
             location,
             occupation,
+            bio,
             viewedProfile: 0,
             impressions: 0
         })
@@ -53,7 +55,8 @@ export const login = async (req,res) => {
             picturePath,
             friends,
             location,
-            occupation
+            occupation,
+            bio
         } = req.body
         console.log(email);
         const user = await User.findOne({email: email})

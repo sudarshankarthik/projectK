@@ -16,7 +16,8 @@ const registerSchema = yup.object().shape({
     password: yup.string().required("required"),
     location: yup.string().required("required"),
     occupation: yup.string().required("required"),
-    picture: yup.string().required("required")
+    picture: yup.string().required("required"),
+    bio: yup.string().required("required")
 })
 
 const loginScheme = yup.object().shape({
@@ -25,13 +26,14 @@ const loginScheme = yup.object().shape({
 })
 
 const initialValesRegister = {
-    firstName: " ",
-    lastName: " ",
-    email: " ",
+    firstName: "",
+    lastName: "",
+    email: "",
     password: "",
-    location: " ",
-    occupation: " ",
-    picture: " "
+    location: "",
+    occupation: "",
+    picture: "",
+    bio: "",
 }
 
 const initialValuesLogin = {
@@ -64,7 +66,6 @@ const Form = () => {
 
       const user = await userResponse.json()
 
-      console.log(user);
 
       onSubmitProps.resetForm();
 
@@ -178,6 +179,16 @@ const Form = () => {
                   helperText={touched.occupation && errors.occupation}
                   sx={{gridColumn: "span 2"}}
                 />
+                <TextField
+                  label="Bio"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.bio}
+                  name="bio"
+                  error={Boolean(touched.bio) && Boolean(errors.bio)}
+                  helperText={touched.bio && errors.bio}
+                  sx={{gridColumn: "span 2"}}
+                />
                 <Box
                   gridColumn='span 2'
                   border = {`1px solid ${theme.palette.secondary.main}`}
@@ -222,7 +233,7 @@ const Form = () => {
               onChange={handleChange}
               value={values.email}
               name="email"
-              error={Boolean(touched.email) && Boolean(errors.occupation)}
+              error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
               sx={{gridColumn: "span 2"}}
             />
@@ -233,7 +244,7 @@ const Form = () => {
               onChange={handleChange}
               value={values.password}
               name="password"
-              error={Boolean(touched.password) && Boolean(errors.occupation)}
+              error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
               sx={{gridColumn: "span 2"}}
             />             
