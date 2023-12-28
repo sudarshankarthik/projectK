@@ -24,7 +24,7 @@ To run the app, you'll need to install dependencies for both the client and serv
 ```
 MONGO_URI = "mongodb://localhost:27017/projectK"
 PORT = 3001
-JWT_SECRET = "diek29s92kt8vk4kvidk39vk3f"
+JWT_SECRET = "SomeRandomTextDontChangeAfterServerCreatedUsers"
 ```
 
 4. Run `npm install` to install dependencies.
