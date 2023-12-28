@@ -45,5 +45,3 @@ JWT_SECRET = "SomeRandomTextDontChangeAfterServerCreatedUsers"
 - **Authentication:** JWT (JSON Web Tokens)
 
 ---
-
-Feel free to expand on this README with more details about specific features, how to use them, and any other relevant information for developers who might be interested in contributing to or using your app.
