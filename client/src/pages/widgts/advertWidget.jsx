@@ -3,17 +3,19 @@ import { Typography } from '@mui/material'
 import FlexBetween from 'components/flexBetween'
 import WidgetWrapper from 'components/widgetWrapper'
 import React, { useEffect, useState } from 'react'
+import env from 'react-dotenv'
 
 const AdvertWidget = () => {
 
     const {palette} = useTheme()
 
     const [ad, setAd] = useState(null);
+    const api = env.API_URL 
 
     useEffect(() => {
       const getAd = async () => {
         try {
-          const response = await fetch("http://localhost:3001/ad");
+          const response = await fetch(`${api}/ad`);
           if (!response.ok) {
             throw new Error('Failed to fetch ad');
           }
@@ -25,7 +27,7 @@ const AdvertWidget = () => {
       };
   
       getAd();
-    }, []); // Empty dependency array to run the effect only once on mount
+    }, [api]); // Empty dependency array to run the effect only once on mount
 
     
 
@@ -44,7 +46,7 @@ const AdvertWidget = () => {
             width="100%"
             height="auto"
             alt="ad"
-            src= {`http://localhost:3001/images/${ad.picturePath}`}
+            src= {`${api}/images/${ad.picturePath}`}
             style={{borderRadius: "0.75rem",margin: "0.75rem 0"}}
         />
         <FlexBetween>

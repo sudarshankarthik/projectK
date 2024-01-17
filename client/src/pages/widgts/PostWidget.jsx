@@ -11,6 +11,7 @@ import FlexBetween from 'components/flexBetween';
 import UserImage from 'components/UserImage';
 import Dropzone from 'react-dropzone';
 import { userActions } from 'store/user-slice';
+import env from 'react-dotenv';
 
 
 const PostWidget = () => {
@@ -23,7 +24,7 @@ const PostWidget = () => {
   const token = useSelector((state) => state.token)
   const dispatch = useDispatch()
 
-
+  const api = env.API_URL 
   const handlePost = async () => {
     const formData = new FormData()
     formData.append("description", discription)
@@ -31,7 +32,7 @@ const PostWidget = () => {
       formData.append("picture", image)
     }
 
-    const res = await fetch(`http://localhost:3001/posts`, {
+    const res = await fetch(`${api}/posts`, {
       method: "POST",
       headers: { Authorization: token },
       body: formData

@@ -39,7 +39,7 @@ mongoose.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true
 }).then(
     () => {
-        app.listen(PORT, () => console.log("listning on port 3001..."))
+        app.listen(PORT, () => console.log("listning on port 5001..."))
     }
 ).catch(
     (e) => console.log(e)

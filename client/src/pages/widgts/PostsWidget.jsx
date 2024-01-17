@@ -2,6 +2,7 @@
 import Post from 'components/Post'
 import WidgetWrapper from 'components/widgetWrapper'
 import React, { useEffect } from 'react'
+import env from 'react-dotenv'
 import { useDispatch, useSelector } from 'react-redux'
 import { userActions } from 'store/user-slice'
 
@@ -11,11 +12,11 @@ const PostsWidget = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const posts = useSelector((state) => state.posts); // Use the selector to get posts
-
+  const api = env.API_URL  
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/posts`, {
+        const response = await fetch(`${api}/posts`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -37,7 +38,7 @@ const PostsWidget = () => {
       // Only fetch posts if they are not already in the Redux store
       getPosts();
     }
-  }, [dispatch, token, posts]);
+  }, [dispatch, token, posts,api]);
 
   if (!posts) return <>Loading...</>;
 

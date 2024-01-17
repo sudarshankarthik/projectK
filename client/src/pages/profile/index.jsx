@@ -5,6 +5,7 @@ import PostWidget from 'pages/widgts/PostWidget'
 import PostsWidget from 'pages/widgts/PostsWidget'
 import UserWidgets from 'pages/widgts/UserWidgets'
 import React, { useEffect, useState } from 'react'
+import env from 'react-dotenv'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
@@ -13,7 +14,7 @@ const Profile = () => {
   const {id} = useParams()
   const token = useSelector((state) => state.token)
   const [user, setuser] = useState(null)
-
+  const api = env.API_URL 
 
 
   useEffect(
@@ -21,7 +22,7 @@ const Profile = () => {
 
     const getUser = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/users/${id}`, {
+        const response = await fetch(`${api}/users/${id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -42,7 +43,7 @@ const Profile = () => {
     }
 
     getUser()
-  }, [id,token]
+  }, [id,token,api]
   )
 
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)")

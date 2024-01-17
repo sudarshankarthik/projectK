@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import Dropzone from 'react-dropzone'
 import FlexBetween from 'components/flexBetween'
 import { userActions } from 'store/user-slice'
+import env from 'react-dotenv'
 
 const registerSchema = yup.object().shape({
     firstName: yup.string().required("required"),
@@ -48,6 +49,7 @@ const Form = () => {
     const theme = useTheme()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const api = env.API_URL 
 
     const register = async (values,onSubmitProps) => {
       const formData = new FormData()
@@ -57,7 +59,7 @@ const Form = () => {
       }
       
       const userResponse = await fetch(
-        "http://localhost:3001/auth/register", 
+        `${api}/auth/register`, 
         {
           method: "POST",
           body: formData,
@@ -78,7 +80,7 @@ const Form = () => {
 
     const login = async (values,onSubmitProps) => {
       const userResponse = await fetch(
-        "http://localhost:3001/auth/login", 
+        `${api}/auth/login`, 
         {
           method: "POST",
           headers: {"Content-Type": "application/json"},

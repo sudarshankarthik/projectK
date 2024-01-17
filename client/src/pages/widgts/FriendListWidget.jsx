@@ -2,6 +2,7 @@ import { Box } from '@mui/material'
 import Friend from 'components/Friend'
 import WidgetWrapper from 'components/widgetWrapper'
 import React, { useEffect } from 'react'
+import env from 'react-dotenv'
 import { useDispatch, useSelector } from 'react-redux'
 import { userActions } from 'store/user-slice'
 
@@ -17,12 +18,14 @@ const FriendListWidget = (props) => {
   const token = useSelector((state) => state.token)
   const dispatch = useDispatch()
   const friendsData = useSelector((state) => state.friends)
+  const api = env.API_URL  
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const dataPromises = friends.map(async (friend) => {
-          const response = await fetch(`http://localhost:3001/users/${friend}`, {
+          const response = await fetch(`${api}/users/${friend}`, {
             method: "GET",
             headers: {
               Authorization: `Bearer ${token}`,
@@ -45,7 +48,7 @@ const FriendListWidget = (props) => {
     };
 
     fetchData();
-  }, [friends, token,dispatch]);
+  }, [friends, token,dispatch,api]);
 
   if (!friendsData) return (<>loding ... </>)
 

@@ -7,6 +7,7 @@ import Friend from './Friend'
 import { Box, Divider, IconButton, Typography } from '@mui/material'
 import FlexBetween from './flexBetween'
 import { ChatBubbleOutlineOutlined, FavoriteBorderOutlined, FavoriteOutlined, ShareOutlined } from '@mui/icons-material'
+import env from 'react-dotenv'
 
 const Post = ({id,firstName,lastName,discription,likes,comments,location,picturePath,updatedAt,userId,userPicturePath}) => {
   
@@ -17,11 +18,12 @@ const Post = ({id,firstName,lastName,discription,likes,comments,location,picture
   const loggedUserId = useSelector((state) => state.user._id)
   var isLiked = Boolean(likes[loggedUserId]);
   var nLikes = Object.keys(likes).length;
+  const api = env.API_URL 
 
   const {palette} = useTheme()
 
   const patchLike = async () => {
-    const response = await fetch(`http://localhost:3001/posts/${id}/like`, {
+    const response = await fetch(`${api}/posts/${id}/like`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -53,7 +55,7 @@ const Post = ({id,firstName,lastName,discription,likes,comments,location,picture
             style={{borderRadius: "0.75rem",
                     marginTop: "0.75rem"
           }}
-            src={`http://localhost:3001/images/${picturePath}`}
+            src={`${api}/images/${picturePath}`}
           />
         )
       }

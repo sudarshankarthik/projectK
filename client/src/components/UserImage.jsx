@@ -1,7 +1,11 @@
 import { Box } from '@mui/material'
 import React from 'react'
+import env from 'react-dotenv'
 
 const UserImage = ({image,size="60px"}) => {
+
+  const api = env.API_URL 
+
   return (
     <Box width={size} height={size}>
         <img
@@ -12,7 +16,7 @@ const UserImage = ({image,size="60px"}) => {
             width={size}
             height={size}
             alt='user'
-            src={`http://localhost:3001/images/${image}`}
+            src={`${api}/images/${image}`}
         />
     </Box>
   )

@@ -7,8 +7,15 @@ import FlexBetween from './flexBetween'
 import UserImage from './UserImage'
 import { Box, IconButton, Typography } from '@mui/material'
 import { PersonAddOutlined, PersonRemoveOutlined } from '@mui/icons-material'
+import env from 'react-dotenv'
 
 const Friend = ({friendId, name, location, userPicturePath}) => {
+
+
+
+  
+    // Use process.env.REACT_APP_API_URL wherever you need the API URL
+    const apiUrl = env.API_URL
 
     const {palette} = useTheme()
     const dispatch = useDispatch()
@@ -22,7 +29,7 @@ const Friend = ({friendId, name, location, userPicturePath}) => {
 
     const patchFriend = async () => {
       const response = await fetch(
-        `http://localhost:3001/users/friend/${friendId}`,
+        `${apiUrl}/users/friend/${friendId}`,
         {
           method: "PATCH",
           headers: {
