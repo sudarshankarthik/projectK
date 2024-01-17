@@ -1,46 +1,26 @@
 import React from 'react'
 
-// import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-// import { useEffect } from 'react'
+
 import WidgetWrapper from 'components/widgetWrapper'
 import FlexBetween from 'components/flexBetween'
 import { Box, Divider, Typography, useTheme } from '@mui/material'
 import UserImage from 'components/UserImage'
-const UserWidgets = () => {
+const UserWidgets = (props) => {
 
-    // const [user, setUser] = useState(null)
     const { palette } = useTheme()
     const navigate = useNavigate()
-    // const token = useSelector((state) => state.token)
-    const user = useSelector((state) => state.user)
+
+    const cnt_user = useSelector((state) => state.user)
+    var user
+    if (props.user == null)
+        user = cnt_user 
+    else
+        user = props.user
     const bg = palette.background.main
     const primary = palette.primary.main
     const accent = palette.accent.main
-
-    // const getUser = useCallback(async () => {
-    //     const res = await fetch(`http://localhost:3001/users/${userId}`,
-    //         {
-    //             method: "GET",
-    //             headers: {
-    //                 Authorization: `${token}`
-    //             }
-    //         }
-    //     )
-
-    //     const data = await res.json()
-    //     setUser(data)
-    // }, [userId, token, setUser])
-
-
-    // useEffect(
-    //     () => {
-    //         getUser()
-    //     }, [getUser]
-    // )
-
-    // if (!user) return null
 
     const {
         firstName,
@@ -53,7 +33,6 @@ const UserWidgets = () => {
         bio,occupation,location
     } = user
 
-    if (friends === null) friends = []
 
     return (
         <WidgetWrapper>

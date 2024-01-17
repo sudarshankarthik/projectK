@@ -5,9 +5,15 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { userActions } from 'store/user-slice'
 
-const FriendListWidget = () => {
+const FriendListWidget = (props) => {
 
-  const { friends } = useSelector((state) => state.user)
+  const cnt_user = useSelector((state) => state.user)
+  var user
+  if (props.user == null)
+      user = cnt_user 
+  else
+      user = props.user
+  const friends = user.friends
   const token = useSelector((state) => state.token)
   const dispatch = useDispatch()
   const friendsData = useSelector((state) => state.friends)

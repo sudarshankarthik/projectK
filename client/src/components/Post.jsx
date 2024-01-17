@@ -15,8 +15,8 @@ const Post = ({id,firstName,lastName,discription,likes,comments,location,picture
   const dispatch = useDispatch()
   const token = useSelector((state) => state.token)
   const loggedUserId = useSelector((state) => state.user._id)
-  const isLiked = Boolean(likes[loggedUserId]);
-  const nLikes = Object.keys(likes).length;
+  var isLiked = Boolean(likes[loggedUserId]);
+  var nLikes = Object.keys(likes).length;
 
   const {palette} = useTheme()
 
@@ -28,7 +28,6 @@ const Post = ({id,firstName,lastName,discription,likes,comments,location,picture
         "Content-Type": "application/json"
       }
     })
-
 
     const post = await response.json()
     

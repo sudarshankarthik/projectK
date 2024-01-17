@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import {
   EditOutlined,
   DeleteOutlined,
@@ -75,7 +75,9 @@ const PostWidget = () => {
         >
 
           <Dropzone
-            accept=".jpg,.jpeg,.png"
+            accept={{
+              "image": [".png",".jpeg",".jpg"]
+            }}
             multiple={false}
             onDrop={(file) => setImage(file[0])}
           >

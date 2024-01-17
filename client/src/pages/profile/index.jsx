@@ -61,9 +61,9 @@ const Profile = () => {
         <Box
           flexBasis={isNonMobileScreens ? "26%" : undefined}
         >
-          <UserWidgets />
+          <UserWidgets user = {user} />
           <Box m="2rem 0" />
-          <FriendListWidget />
+          <FriendListWidget user = {user}/>
         </Box>
 
         <Box

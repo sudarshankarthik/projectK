@@ -196,7 +196,9 @@ const Form = () => {
                   p="1rem"
                 >
                   <Dropzone
-                    accept=".jpg,.jpeg,.png"
+                    accept={{
+                      "image": [".png",".jpeg",".jpg"]
+                    }}
                     multiple={false}
                     onDrop={(file) => setFieldValue("picture",file[0])}
                   >
@@ -236,6 +238,7 @@ const Form = () => {
               error={Boolean(touched.email) && Boolean(errors.email)}
               helperText={touched.email && errors.email}
               sx={{gridColumn: "span 2"}}
+              autoComplete="on"
             />
             <TextField
               label="Password"
@@ -247,6 +250,7 @@ const Form = () => {
               error={Boolean(touched.password) && Boolean(errors.password)}
               helperText={touched.password && errors.password}
               sx={{gridColumn: "span 2"}}
+              autoComplete="on"
             />             
           </Box>
           <Box>

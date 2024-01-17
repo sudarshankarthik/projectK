@@ -28,14 +28,14 @@ export const themeSettings = (mode) => {
             default: '#050505',
           },
           primary: {
-            main: '#85CB33',
+            main: '#22ff00',
 
           },
           secondary: {
             main: '#ede9de',
           },
           accent: {
-            main: '#3bdc00',
+            main: '#268f00',
           }
 
         }),
