@@ -1,3 +1,3 @@
 window.env = {
-  "API_URL": "http://localhost:5001"
+  "API_URL": "https://project-k-pearl.vercel.app"
 };
