@@ -17,4 +17,3 @@ export const getAd = async (req, res) => {
   });
 };
 
-

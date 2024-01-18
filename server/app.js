@@ -37,7 +37,7 @@ const PORT = process.env.PORT
 mongoose.connect(process.env.MONGO_URI, {
     useNewURLParser: true,
     useUnifiedTopology: true
-}).then(
+}).then( 
     () => {
         app.listen(PORT, () => console.log("listning on port 5001..."))
     }
