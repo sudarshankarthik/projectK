@@ -55,7 +55,7 @@ const Post = ({id,firstName,lastName,discription,likes,comments,location,picture
             style={{borderRadius: "0.75rem",
                     marginTop: "0.75rem"
           }}
-            src={`${api}/images/${picturePath}`}
+            src={`${picturePath}`}
           />
         )
       }

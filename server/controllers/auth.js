@@ -48,15 +48,8 @@ export const register = async (req,res) => {
 export const login = async (req,res) => {
     try {
         const {
-            firstName,
-            lastName,
             email,
             password,
-            picturePath,
-            friends,
-            location,
-            occupation,
-            bio
         } = req.body
         console.log(email);
         const user = await User.findOne({email: email})
