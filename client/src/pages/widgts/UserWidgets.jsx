@@ -29,9 +29,11 @@ const UserWidgets = (props) => {
         viewedProfile,
         impressions,
         picturePath,
-        userId,
+        _id,
         bio,occupation,location
     } = user
+
+    console.log(user);
 
 
     return (
@@ -40,7 +42,7 @@ const UserWidgets = (props) => {
                 gap="0.5rem"
                 pd="1.1rem"
                 marginBottom="1.1rem"
-                onClick={() => navigate(`/profile/${userId}`)}
+                onClick={() => navigate(`/${_id}`)}
             >
                 <FlexBetween
                     gap="1rem"

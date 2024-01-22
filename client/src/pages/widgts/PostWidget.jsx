@@ -98,7 +98,7 @@ const PostWidget = () => {
                 >
                   <input {...getInputProps()} />
                   {!image ? (
-                    <Typography>{"Add Image Hear"}</Typography>
+                    <Typography>{"Add Image Here"}</Typography>
                   ) : (
                     <FlexBetween>
                       <Typography>{image.name}</Typography>
